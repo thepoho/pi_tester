@@ -66,45 +66,704 @@
     </nav>
 
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-lg-12">
         
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#lamps" aria-controls="lamps" role="tab" data-toggle="tab">Lamps</a></li>
+            <li role="presentation" class="active"><a href="#pins" aria-controls="pins" role="tab" data-toggle="tab">Lamps</a></li>
+<!--
             <li role="presentation"><a href="#buttons" aria-controls="buttons" role="tab" data-toggle="tab">Buttons</a></li>
             <li role="presentation"><a href="#coils" aria-controls="coils" role="tab" data-toggle="tab">Coils</a></li>
             <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+-->
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content">
             
-            <div role="tabpanel" class="tab-pane active" id="lamps">
-              <h3>Lamps</h3>
-              <table class="table">
-                <tr>
-                  <td class="lamp_combo">
-                    <select class="lamp_state all_lamps">
-                      <option value="lamp_off">Off</option>
-                      <option value="lamp_on">On</option>
-                      <option value="lamp_flash_slow">Slow</option>
-                      <option value="lamp_flash_fast">Fast</option>
-                    </select>
-                  </td>
-                  <td class="lamp lamp_off">Off</td>
-                  <td class="lamp lamp_on">On</td>
-                  <td class="lamp lamp_flash_slow">Slow</td>
-                  <td class="lamp lamp_flash_fast">Fast</td>
-              </table>
-              <table class="table table-bordered table-condensed lamps">
-                
-              </table>
+            <div role="tabpanel" class="tab-pane active" id="pins">
+              <h3>Pins</h3>
+<table class='table'>
+            <tr>
+              <th>Pin #</th>
+              <th>Name</th>
+              <th>Direction</th>
+              <th>State</th>
+              <th colspan='2'>
+                <a class='reload btn btn-primary btn-sm' href='#'>Reload</a>
+              </th>
+              <th>State</th>
+              <th>Direction</th>
+              <th>Name</th>
+              <th>Pin #</th>
+            </tr>
+            <tr>
+              <td class='pin_1' data-pin='1'>1</td>
+              <td class='pin_1' data-pin='1'>dc_power</td>
+              <td class='pin_1' data-pin='1'>
+              </td>
+              <td class='pin_1 state' data-pin='1'>
+              </td>
+              <td class='pin pin_1' data-pin='1' style='width: 30px'>
+                <i class='fa fa-square-o'></i>
+              </td>
+              <td class='pin pin_2' data-pin='2' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_2 state' data-pin='2'>
+              </td>
+              <td class='pin_2' data-pin='2'>
+              </td>
+              <td class='pin_2' data-pin='2'>dc_power</td>
+              <td class='pin_2' data-pin='2'>2</td>
+            </tr>
+            <tr>
+              <td class='pin_3' data-pin='3'>3</td>
+              <td class='pin_3' data-pin='3'>gpio_02</td>
+              <td class='pin_3' data-pin='3'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_3 state' data-pin='3'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_3' data-pin='3' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_4' data-pin='4' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_4 state' data-pin='4'>
+              </td>
+              <td class='pin_4' data-pin='4'>
+              </td>
+              <td class='pin_4' data-pin='4'>dc_power</td>
+              <td class='pin_4' data-pin='4'>4</td>
+            </tr>
+            <tr>
+              <td class='pin_5' data-pin='5'>5</td>
+              <td class='pin_5' data-pin='5'>gpio_03</td>
+              <td class='pin_5' data-pin='5'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_5 state' data-pin='5'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_5' data-pin='5' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_6' data-pin='6' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_6 state' data-pin='6'>
+              </td>
+              <td class='pin_6' data-pin='6'>
+              </td>
+              <td class='pin_6' data-pin='6'>ground</td>
+              <td class='pin_6' data-pin='6'>6</td>
+            </tr>
+            <tr>
+              <td class='pin_7' data-pin='7'>7</td>
+              <td class='pin_7' data-pin='7'>gpio_04</td>
+              <td class='pin_7' data-pin='7'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_7 state' data-pin='7'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_7' data-pin='7' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_8' data-pin='8' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_8 state' data-pin='8'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_8' data-pin='8'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_8' data-pin='8'>gpio_14</td>
+              <td class='pin_8' data-pin='8'>8</td>
+            </tr>
+            <tr>
+              <td class='pin_9' data-pin='9'>9</td>
+              <td class='pin_9' data-pin='9'>ground</td>
+              <td class='pin_9' data-pin='9'>
+              </td>
+              <td class='pin_9 state' data-pin='9'>
+              </td>
+              <td class='pin pin_9' data-pin='9' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_10' data-pin='10' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_10 state' data-pin='10'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_10' data-pin='10'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_10' data-pin='10'>gpio_15</td>
+              <td class='pin_10' data-pin='10'>10</td>
+            </tr>
+            <tr>
+              <td class='pin_11' data-pin='11'>11</td>
+              <td class='pin_11' data-pin='11'>gpio_17</td>
+              <td class='pin_11' data-pin='11'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_11 state' data-pin='11'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_11' data-pin='11' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_12' data-pin='12' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_12 state' data-pin='12'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_12' data-pin='12'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_12' data-pin='12'>gpio_18</td>
+              <td class='pin_12' data-pin='12'>12</td>
+            </tr>
+            <tr>
+              <td class='pin_13' data-pin='13'>13</td>
+              <td class='pin_13' data-pin='13'>gpio_27</td>
+              <td class='pin_13' data-pin='13'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_13 state' data-pin='13'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_13' data-pin='13' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_14' data-pin='14' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_14 state' data-pin='14'>
+              </td>
+              <td class='pin_14' data-pin='14'>
+              </td>
+              <td class='pin_14' data-pin='14'>ground</td>
+              <td class='pin_14' data-pin='14'>14</td>
+            </tr>
+            <tr>
+              <td class='pin_15' data-pin='15'>15</td>
+              <td class='pin_15' data-pin='15'>gpio_22</td>
+              <td class='pin_15' data-pin='15'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_15 state' data-pin='15'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_15' data-pin='15' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_16' data-pin='16' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_16 state' data-pin='16'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_16' data-pin='16'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_16' data-pin='16'>gpio_23</td>
+              <td class='pin_16' data-pin='16'>16</td>
+            </tr>
+            <tr>
+              <td class='pin_17' data-pin='17'>17</td>
+              <td class='pin_17' data-pin='17'>dc_power</td>
+              <td class='pin_17' data-pin='17'>
+              </td>
+              <td class='pin_17 state' data-pin='17'>
+              </td>
+              <td class='pin pin_17' data-pin='17' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_18' data-pin='18' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_18 state' data-pin='18'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_18' data-pin='18'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_18' data-pin='18'>gpio_24</td>
+              <td class='pin_18' data-pin='18'>18</td>
+            </tr>
+            <tr>
+              <td class='pin_19' data-pin='19'>19</td>
+              <td class='pin_19' data-pin='19'>gpio_10</td>
+              <td class='pin_19' data-pin='19'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_19 state' data-pin='19'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_19' data-pin='19' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_20' data-pin='20' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_20 state' data-pin='20'>
+              </td>
+              <td class='pin_20' data-pin='20'>
+              </td>
+              <td class='pin_20' data-pin='20'>ground</td>
+              <td class='pin_20' data-pin='20'>20</td>
+            </tr>
+            <tr>
+              <td class='pin_21' data-pin='21'>21</td>
+              <td class='pin_21' data-pin='21'>gpio_09</td>
+              <td class='pin_21' data-pin='21'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_21 state' data-pin='21'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_21' data-pin='21' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_22' data-pin='22' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_22 state' data-pin='22'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_22' data-pin='22'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_22' data-pin='22'>gpio_25</td>
+              <td class='pin_22' data-pin='22'>22</td>
+            </tr>
+            <tr>
+              <td class='pin_23' data-pin='23'>23</td>
+              <td class='pin_23' data-pin='23'>gpio_11</td>
+              <td class='pin_23' data-pin='23'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_23 state' data-pin='23'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_23' data-pin='23' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_24' data-pin='24' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_24 state' data-pin='24'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_24' data-pin='24'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_24' data-pin='24'>gpio_08</td>
+              <td class='pin_24' data-pin='24'>24</td>
+            </tr>
+            <tr>
+              <td class='pin_25' data-pin='25'>25</td>
+              <td class='pin_25' data-pin='25'>ground</td>
+              <td class='pin_25' data-pin='25'>
+              </td>
+              <td class='pin_25 state' data-pin='25'>
+              </td>
+              <td class='pin pin_25' data-pin='25' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_26' data-pin='26' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_26 state' data-pin='26'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_26' data-pin='26'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_26' data-pin='26'>gpio_07</td>
+              <td class='pin_26' data-pin='26'>26</td>
+            </tr>
+            <tr>
+              <td class='pin_27' data-pin='27'>27</td>
+              <td class='pin_27' data-pin='27'>id_sd</td>
+              <td class='pin_27' data-pin='27'>
+              </td>
+              <td class='pin_27 state' data-pin='27'>
+              </td>
+              <td class='pin pin_27' data-pin='27' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_28' data-pin='28' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_28 state' data-pin='28'>
+              </td>
+              <td class='pin_28' data-pin='28'>
+              </td>
+              <td class='pin_28' data-pin='28'>id_sc</td>
+              <td class='pin_28' data-pin='28'>28</td>
+            </tr>
+            <tr>
+              <td class='pin_29' data-pin='29'>29</td>
+              <td class='pin_29' data-pin='29'>gpio_5</td>
+              <td class='pin_29' data-pin='29'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_29 state' data-pin='29'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_29' data-pin='29' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_30' data-pin='30' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_30 state' data-pin='30'>
+              </td>
+              <td class='pin_30' data-pin='30'>
+              </td>
+              <td class='pin_30' data-pin='30'>ground</td>
+              <td class='pin_30' data-pin='30'>30</td>
+            </tr>
+            <tr>
+              <td class='pin_31' data-pin='31'>31</td>
+              <td class='pin_31' data-pin='31'>gpio_6</td>
+              <td class='pin_31' data-pin='31'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_31 state' data-pin='31'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_31' data-pin='31' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_32' data-pin='32' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_32 state' data-pin='32'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_32' data-pin='32'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_32' data-pin='32'>gpio_12</td>
+              <td class='pin_32' data-pin='32'>32</td>
+            </tr>
+            <tr>
+              <td class='pin_33' data-pin='33'>33</td>
+              <td class='pin_33' data-pin='33'>gpio_13</td>
+              <td class='pin_33' data-pin='33'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_33 state' data-pin='33'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_33' data-pin='33' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_34' data-pin='34' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_34 state' data-pin='34'>
+              </td>
+              <td class='pin_34' data-pin='34'>
+              </td>
+              <td class='pin_34' data-pin='34'>ground</td>
+              <td class='pin_34' data-pin='34'>34</td>
+            </tr>
+            <tr>
+              <td class='pin_35' data-pin='35'>35</td>
+              <td class='pin_35' data-pin='35'>gpio_19</td>
+              <td class='pin_35' data-pin='35'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_35 state' data-pin='35'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_35' data-pin='35' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_36' data-pin='36' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_36 state' data-pin='36'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_36' data-pin='36'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_36' data-pin='36'>gpio_16</td>
+              <td class='pin_36' data-pin='36'>36</td>
+            </tr>
+            <tr>
+              <td class='pin_37' data-pin='37'>37</td>
+              <td class='pin_37' data-pin='37'>gpio_26</td>
+              <td class='pin_37' data-pin='37'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_37 state' data-pin='37'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin pin_37' data-pin='37' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_38' data-pin='38' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_38 state' data-pin='38'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_38' data-pin='38'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_38' data-pin='38'>gpio_20</td>
+              <td class='pin_38' data-pin='38'>38</td>
+            </tr>
+            <tr>
+              <td class='pin_39' data-pin='39'>39</td>
+              <td class='pin_39' data-pin='39'>ground</td>
+              <td class='pin_39' data-pin='39'>
+              </td>
+              <td class='pin_39 state' data-pin='39'>
+              </td>
+              <td class='pin pin_39' data-pin='39' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin pin_40' data-pin='40' style='width: 30px'>
+                <i class='fa fa-dot-circle-o'></i>
+              </td>
+              <td class='pin_40 state' data-pin='40'>
+                <span class='state'></span>
+                <select class='state'>
+                  <option value='off'>Off</option>
+                  <option value='on'>On</option>
+                </select>
+              </td>
+              <td class='pin_40' data-pin='40'>
+                <select class='direction'>
+                  <option value=''>Not Set</option>
+                  <option value='out'>Out</option>
+                  <option value='in'>In</option>
+                </select>
+              </td>
+              <td class='pin_40' data-pin='40'>gpio_21</td>
+              <td class='pin_40' data-pin='40'>40</td>
+            </tr>
+          </table>
             </div>
             
-
+<!--
             <div role="tabpanel" class="tab-pane" id="buttons">
                 <h3>Buttons</h3>
                 <table class="table table-bordered table-condensed buttons"></table>
@@ -116,23 +775,7 @@
               <table class="table table-bordered table-condensed coils"></table>     
             </div>
 
-            <div role="tabpanel" class="tab-pane" id="settings">
-              <!-- 
-              Game state:
-              <select class="game_state">
-                <option value="0">Off</option>
-                <option value="1">Attract</option>
-                <option value="2">Playing</option>
-                <option value="3">Debug</option>
-              </select> 
-              -->
-              <div class="panel panel-default">
-                <div class="panel-heading">Game Log</div>
-                <div class="panel-body">
-                  <textarea class="log" style="width: 100%" rows='25'></textarea>
-                </div>
-              </div>
-            </div>
+-->
           </div>
 
         </div>
