@@ -126,9 +126,9 @@ int SocketServer::sendWsReply(struct mg_connection *conn)
 
 void SocketServer::processMessage(Document* document){
   string message = document->FindMember("message")->value.GetString();
-    // cout << "Got message " << document;
+  cout << "Got message " << document;
 
-  if(message.compare("get_buttons") == 0){
+  if(message.compare("shift_out") == 0){
     // pGameController->sendWebMessage(pGameController->buttonController()->getInfoString());
   
   }else if(message.compare("get_lamps") == 0){
