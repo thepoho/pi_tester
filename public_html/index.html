@@ -18,7 +18,7 @@
 
     <script type="text/javascript">
       jQuery(function($){
-        // GameShow.startup();
+        PiTester.startup();
       })
     </script>
 
@@ -773,12 +773,12 @@
                   <th>Latch</th>
                 </tr>
                 <tr>
-                  <td><input class="shift_out_clock"></td>
-                  <td><input class="shift_out_data"></td>
-                  <td><input class="shift_out_latch"></td>
+                  <td><input class="shift_out_clock" value="1"></td>
+                  <td><input class="shift_out_data" value="2"></td>
+                  <td><input class="shift_out_latch" value="3"></td>
                 </tr>
               </table>
-              <table class="table table-bordered table-condensed ">
+              <table class="table table-bordered table-condensed shift_out">
                 <thead>
                   <tr>
                     <th>1</td>
@@ -791,7 +791,7 @@
                     <th>8</td>
                     <th>Delete</td>
                   </tr>
-                  <tr class='shift_row first_row'>
+                  <tr class='shift_out_row first_row'>
                     <td><input type="checkbox" class="shift_row"/></td>
                     <td><input type="checkbox" class="shift_row"/></td>
                     <td><input type="checkbox" class="shift_row"/></td>
@@ -802,12 +802,20 @@
                     <td><input type="checkbox" class="shift_row"/></td>
                     <td>
                       <button class='btn btn-danger shift_out_delete'>
-                        <i class="fa fa-times">
-                      </a>
+                        Delete
+                      </button
                     </td>
                   </tr>
                 </thead>
               </table>
+              <div style="text- align: right">
+                <button class='btn btn-success shift_out_send'>
+                  Send!
+                </button>
+                <button class='btn btn-default shift_out_new_line'>
+                  New Line
+                </button>
+              </div>
             </div>
 
 <!--

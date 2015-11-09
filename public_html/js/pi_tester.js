@@ -6,14 +6,55 @@ PiTester = {
     PiTester.websocket.onmessage = PiTester.socketOnMessage;
     PiTester.websocket.onclose = function(ev) {console.log(ev);}
 
+    $("button.shift_out_new_line").click(function(){
+      var row = $("tr.shift_out_row.first_row");
+      $("table.shift_out").append("<tr class='shift_out_row'>"+row.html()+"</tr>");
+      PiTester.shiftOutRowBind();
+    });
+
+    PiTester.shiftOutRowBind();
+
+    $("button.shift_out_send").click(function(){
+      PiTester.sendShiftOut();
+    });
     // $("select.game_state").change(function(){
     //   var data = {
     //     message: "set_game_state", 
     //     value: parseInt($(this).val())
     //   };
     //   PiTester.sendMessage(data);
+    // });
+  },
 
+  sendShiftOut: function(){
+    var send = {message: "shift_out",
+      data: [], 
+      data_pin: parseInt($("input.shift_out_data").val()),
+      clock_pin: parseInt($("input.shift_out_clock").val()),
+      latch_pin: parseInt($("input.shift_out_latch").val())
+    };
+    
+    $.each($("tr.shift_out_row td input.shift_row"), function(idx, e){
+      e = $(e);
+      send.data.push(e.is(':checked'));
     });
+    console.log(send);
+    PiTester.sendMessage(send);
+
+  },
+
+  shiftOutRowBind: function(){
+    $("button.shift_out_delete").unbind();
+    $("button.shift_out_delete").click(function(){
+      var parent = $(this).parents("tr");
+      if(!parent.hasClass("first_row")){
+        parent.remove();
+      }
+    });
+    $("tr.shift_out_row td").unbind();
+    $("tr.shift_out_row td").click(function(){
+      $(this).find("input").click();
+    })
   },
 
   socketOnMessage: function(ev){

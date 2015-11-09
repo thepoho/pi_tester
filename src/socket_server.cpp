@@ -126,10 +126,21 @@ int SocketServer::sendWsReply(struct mg_connection *conn)
 
 void SocketServer::processMessage(Document* document){
   string message = document->FindMember("message")->value.GetString();
-  cout << "Got message " << document;
+  cout << "Got message " << message << endl;
 
   if(message.compare("shift_out") == 0){
-    // pGameController->sendWebMessage(pGameController->buttonController()->getInfoString());
+    // string name = document->FindMember("name")->value.GetString();
+    int clockPin = document->FindMember("clock_pin")->value.GetInt();
+    int dataPin = document->FindMember("data_pin")->value.GetInt();
+    int latchPin = document->FindMember("latch_pin")->value.GetInt();
+
+    cout << "pins: " << clockPin << " " << dataPin << " " << latchPin << endl;
+    
+    const Value& tmp = document->FindMember("data")->value;
+    cout << "data: " <<  tmp.Size() << endl;
+
+    // for (SizeType i = 0; i < tmp.Size(); i++) // Uses SizeType instead of size_t
+    //     printf("a[%d] = %d\n", i, tmp[i].GetInt());
   
   }else if(message.compare("get_lamps") == 0){
     // pGameController->sendWebMessage(pGameController->lampController()->getInfoString());

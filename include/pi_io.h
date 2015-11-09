@@ -29,6 +29,8 @@ public:
   unsigned int getMillis(void);
 
   void flushSerialData();
+
+  void setupPins();
   //void setSerialOutput(int num, char state);
 
 private:
