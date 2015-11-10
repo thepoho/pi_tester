@@ -14,8 +14,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-using namespace std;
-
 using namespace rapidjson;
 using namespace std;
 

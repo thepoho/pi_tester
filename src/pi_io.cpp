@@ -82,3 +82,41 @@ void PiIO::flushSerialData(){}
 unsigned int tmp = 0;
 unsigned int PiIO::getMillis(void){ return(++tmp); }
 #endif
+
+void PiIO::test(string poho){
+  cout << poho << endl;
+}
+void PiIO::shiftOut(Document* document)
+{
+  int clockPin = document->FindMember("clock_pin")->value.GetInt();
+  int dataPin = document->FindMember("data_pin")->value.GetInt();
+  int latchPin = document->FindMember("latch_pin")->value.GetInt();
+
+  cout << "pins: " << clockPin << " " << dataPin << " " << latchPin << endl;
+
+  setPinMode(clockPin, OUTPUT);
+  setPinMode(dataPin, OUTPUT);
+  setPinMode(latchPin, OUTPUT);
+
+  pinWrite(dataPin, LOW);
+  pinWrite(latchPin, LOW);
+  pinWrite(clockPin, LOW);
+  
+  const Value& data = document->FindMember("data")->value;
+  int size = data.Size();
+  size = size - 1;
+
+  // SizeType i = size;
+  
+  cout << "HERE" << endl;
+  cout << "Shifting out: ";
+  for (int i = size; i >= 0; i--){ // Uses SizeType instead of size_t
+    cout << data[i].GetInt();
+    pinWrite(dataPin, data[i].GetInt());
+    pinWrite(clockPin, HIGH);
+    pinWrite(clockPin, LOW);
+  }
+  pinWrite(latchPin, HIGH);
+  cout << endl;
+  //     printf("a[%d] = %d\n", i, tmp[i].GetInt());
+}

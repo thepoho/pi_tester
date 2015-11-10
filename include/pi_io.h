@@ -1,5 +1,6 @@
 #ifndef _PIIO_H
 #define _PIIO_H
+#include "common_defines.h"
 
 #ifdef BUILD_RASPI
   #include <wiringPi.h>
@@ -22,7 +23,9 @@ public:
   void pinWrite(int pin, int value);
   //void pwmWrite(int pin, int value);
   int pinRead(int pin);  //needed
-  void shiftOut(char* data);
+  void shiftOut(Document* document);
+  void test(string poho);
+
   //int analogRead(int pin);
   //void analogWrite(int pin, int value);
   void doDelay(unsigned int howLong);

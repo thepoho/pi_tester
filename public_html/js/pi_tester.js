@@ -36,7 +36,11 @@ PiTester = {
     
     $.each($("tr.shift_out_row td input.shift_row"), function(idx, e){
       e = $(e);
-      send.data.push(e.is(':checked'));
+      var tmp = 0;
+      if(e.is(':checked')){
+        tmp = 1;
+      }
+      send.data.push(tmp);
     });
     console.log(send);
     PiTester.sendMessage(send);
