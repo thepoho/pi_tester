@@ -156,7 +156,10 @@ void PiIO::loadPins()
    size = size - 1;
    cout << "Size is " << size << endl;
    for (int i = size; i >= 0; i--){ // Uses SizeType instead of size_t
-     //cout << data[i].FindMember("name").value.GetString();
-     cout << data[i]["name"].GetString() << endl;
+     int wpi = -1;
+     if(data[i].HasMember("wpi")){
+       wpi = data[i]["wpi"].GetInt();
+     }
+     pins[i].startup(i, data[i]["name"].GetString(), wpi);
    }
 }

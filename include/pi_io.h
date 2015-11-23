@@ -1,5 +1,6 @@
 #ifndef _PIIO_H
 #define _PIIO_H
+#include "pin.h"
 #include "common_defines.h"
 
 #ifdef BUILD_RASPI
@@ -41,6 +42,7 @@ private:
 
   //bool serialOutputsDirty;
   void loadPins();
+  Pin pins[40];
 };
 
 #endif
