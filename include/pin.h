@@ -15,6 +15,8 @@ public:
   Pin();
   ~Pin();
   void startup(int _num, string _name, int _wpi_num);
+  int getWpiNum() {return wpi_num;}
+  string getName() {return name;}
 private:
   string name;
   int num, wpi_num;

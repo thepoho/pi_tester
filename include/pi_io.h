@@ -32,7 +32,9 @@ public:
   void doDelay(unsigned int howLong);
   unsigned int getMillis(void);
 
-  void flushSerialData();
+//  void setPinOutputState(int idx, int state);
+//  void setPinDirection(int idx, int dir);
+  //void flushSerialData();
 
   void setupPins();
   //void setSerialOutput(int num, char state);

@@ -35,33 +35,21 @@ void PiIO::startup()
 
 void PiIO::setPinMode(int pin, int mode)
 {
-  pinMode(pin, mode);
+  assert(pin < 40);
+  assert(pins[pin].getWpiNum() != -1);
+  pinMode(pins[pin].getWpiNum(), mode);
 }
 
 void PiIO::pinWrite(int pin, int value)
 {
-  digitalWrite(pin, value);
+  setPinMode(pin, OUTPUT);
+  digitalWrite(pins[pin], value);
 }
 
 int PiIO::pinRead(int pin)
 {
-  return(digitalRead(pin));
-}
-
-void PiIO::flushSerialData()
-{
-  // cout << "TODO" << endl;
-  // if(serialOutputsDirty){
-    // digitalWrite(SERIAL_LATCH_PIN, LOW);
-    
-    // digitalWrite(SERIAL_CLOCK_PIN, LOW);
-    // for (int i = 0; i < SIZEOF(currentSerialState); i++){
-    //   digitalWrite(SERIAL_DATA_PIN, currentSerialState[i]);
-    //   digitalWrite(SERIAL_CLOCK_PIN, HIGH);
-    //   digitalWrite(SERIAL_CLOCK_PIN, LOW);
-    // }
-    // digitalWrite(SERIAL_LATCH_PIN, HIGH);
-  // }
+  setPinMode(pin, INPUT);
+  return(digitalRead(pins[pin]));
 }
 
 void PiIO::doDelay(unsigned int howLong)
@@ -79,11 +67,22 @@ void PiIO::startup()
   loadPins();
 }
 
-void PiIO::setPinMode(int pin, int mode){}
-void PiIO::pinWrite(int pin, int value){}
-int  PiIO::pinRead(int pin){ return(0); }
+void PiIO::setPinMode(int pin, int mode)
+{
+  assert(pin < 40);
+  assert(pins[pin].getWpiNum() != -1);
+}
+void PiIO::pinWrite(int pin, int value)
+{
+  setPinMode(pin, OUTPUT);
+}
+int  PiIO::pinRead(int pin)
+{ 
+  setPinMode(pin, OUTPUT);
+  return(0); 
+}
+
 void PiIO::doDelay(unsigned int howLong){ /*usleep(howLong * 1000);*/}
-void PiIO::flushSerialData(){}
 
 unsigned int tmp = 0;
 unsigned int PiIO::getMillis(void){ return(++tmp); }
@@ -111,10 +110,7 @@ void PiIO::shiftOut(Document* document)
   const Value& data = document->FindMember("data")->value;
   int size = data.Size();
   size = size - 1;
-
-  // SizeType i = size;
   
-  cout << "HERE" << endl;
   cout << "Shifting out: ";
   for (int i = size; i >= 0; i--){ // Uses SizeType instead of size_t
     cout << data[i].GetInt();
@@ -124,7 +120,6 @@ void PiIO::shiftOut(Document* document)
   }
   pinWrite(latchPin, HIGH);
   cout << endl;
-  //     printf("a[%d] = %d\n", i, tmp[i].GetInt());
 }
 
 void PiIO::loadPins()
