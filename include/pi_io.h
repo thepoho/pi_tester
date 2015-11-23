@@ -40,6 +40,7 @@ private:
   //char currentSerialState[SERIAL_NUM_OUTPUTS];
 
   //bool serialOutputsDirty;
+  void loadPins();
 };
 
 #endif

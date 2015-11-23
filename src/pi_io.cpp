@@ -29,6 +29,8 @@ void PiIO::startup()
 {
   if (wiringPiSetup() == -1)
     exit(0);
+
+  loadPins();
 }
 
 void PiIO::setPinMode(int pin, int mode)
@@ -72,7 +74,11 @@ unsigned int PiIO::getMillis(void)
   return(millis());
 }
 #else
-void PiIO::startup(){}
+void PiIO::startup()
+{
+  loadPins();
+}
+
 void PiIO::setPinMode(int pin, int mode){}
 void PiIO::pinWrite(int pin, int value){}
 int  PiIO::pinRead(int pin){ return(0); }
@@ -119,4 +125,38 @@ void PiIO::shiftOut(Document* document)
   pinWrite(latchPin, HIGH);
   cout << endl;
   //     printf("a[%d] = %d\n", i, tmp[i].GetInt());
+}
+
+void PiIO::loadPins()
+{
+  // fullPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("pins.json");
+//http://rapidjson.org/md_doc_stream.html#FileReadStream
+
+  cout << "load pins" << endl;
+  /*FILE* pFile = fopen("pins.json", "r");
+  char buffer[65536];
+  FileReadStream is(pFile, buffer, sizeof(buffer));
+  Document document;
+  document.ParseStream<0, UTF8<>, FileReadStream>(is);
+*/
+
+  FILE* fp = fopen("/home/poho/git/pi_tester/pins.json", "r"); // non-Windows use "r"
+  char readBuffer[65536];
+  FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+  Document document;
+  document.ParseStream(is);
+  fclose(fp);
+
+  assert(document.HasMember("pins"));
+  assert(document.IsObject());
+
+   const Value& data = document["pins"];
+   //const Value& data = document.FindMember("pins");//.value;
+   int size = data.Size();
+   size = size - 1;
+   cout << "Size is " << size << endl;
+   for (int i = size; i >= 0; i--){ // Uses SizeType instead of size_t
+     //cout << data[i].FindMember("name").value.GetString();
+     cout << data[i]["name"].GetString() << endl;
+   }
 }
