@@ -128,14 +128,8 @@ void PiIO::loadPins()
 //http://rapidjson.org/md_doc_stream.html#FileReadStream
 
   cout << "load pins" << endl;
-  /*FILE* pFile = fopen("pins.json", "r");
-  char buffer[65536];
-  FileReadStream is(pFile, buffer, sizeof(buffer));
-  Document document;
-  document.ParseStream<0, UTF8<>, FileReadStream>(is);
-*/
 
-  FILE* fp = fopen("/home/poho/git/pi_tester/pins.json", "r"); // non-Windows use "r"
+  FILE* fp = fopen("pins.json", "r"); // non-Windows use "r"
   char readBuffer[65536];
   FileReadStream is(fp, readBuffer, sizeof(readBuffer));
   Document document;

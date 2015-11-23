@@ -110,14 +110,8 @@ int SocketServer::sendWsReply(struct mg_connection *conn)
       cout << "-- json doesnt contain node 'message' --" << endl;
       return MG_FALSE; 
     }
-    // string message = document["message"].GetString();
-    // cout << "message is " <<  message << endl;
-    // gameShow->processMessage(&document);
     processMessage(&document);
 
-    // delete(document);
-
-    
     return MG_TRUE ;
   }else{
     return MG_FALSE;
@@ -129,27 +123,8 @@ void SocketServer::processMessage(Document* document){
   cout << "Got message " << message << endl;
 
   if(message.compare("shift_out") == 0){
-
     pPiIO->shiftOut(document);
-    // pPiIO->test("blah");
-    
-    // int clockPin = document->FindMember("clock_pin")->value.GetInt();
-    // int dataPin = document->FindMember("data_pin")->value.GetInt();
-    // int latchPin = document->FindMember("latch_pin")->value.GetInt();
-
-    // cout << "pins: " << clockPin << " " << dataPin << " " << latchPin << endl;
-    
-    // const Value& data = document->FindMember("data")->value;
-    // cout << "data: " <<  data.IsArray() << endl;
-
-    // bool* data = new bool[]
-    // for (SizeType i = 0; i < data.Size(); i++){ // Uses SizeType instead of size_t
-    //   cout << data[i].GetBool() << " ";
-    // }
-    // cout << endl;
-    // //     printf("a[%d] = %d\n", i, tmp[i].GetInt());
-  
-  }else if(message.compare("get_lamps") == 0){
+  }else if(message.compare("get_pins") == 0){
     // pGameController->sendWebMessage(pGameController->lampController()->getInfoString());
   }
 }
