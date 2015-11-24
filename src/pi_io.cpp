@@ -98,7 +98,12 @@ void PiIO::shiftOut(Document* document)
   int latchPin = document->FindMember("latch_pin")->value.GetInt();
 
   cout << "pins: " << clockPin << " " << dataPin << " " << latchPin << endl;
-
+   
+  //users will be entering physical pin numbers.  Subtract one from each to get the pin array index.
+  clockPin--;
+  dataPin--;
+  latchPin--;
+  
   setPinMode(clockPin, OUTPUT);
   setPinMode(dataPin, OUTPUT);
   setPinMode(latchPin, OUTPUT);
@@ -149,7 +154,7 @@ void PiIO::loadPins()
     if(data[i].HasMember("wpi")){
       wpi = data[i]["wpi"].GetInt();
     }
-    pins[i].startup(i, data[i]["name"].GetString(), wpi);
+    pins[i].startup(data[i]["pin"].GetInt(), data[i]["name"].GetString(), wpi, i);
   }
   cout << getInfoString() << endl;
 }
@@ -167,7 +172,7 @@ string PiIO::getInfoString()
   writer.StartArray();
 
   for (int i = 0; i < 40; i++){
-      pins[i].serializeJson(&writer);
+    pins[i].serializeJson(&writer);
   }
   writer.EndArray();
   writer.EndObject();

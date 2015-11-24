@@ -10,12 +10,13 @@ Pin::~Pin()
 
 }
 
-void Pin::startup(int _num, string _name, int _wpi_num)
+void Pin::startup(int _num, string _name, int _wpi_num, int idx)
 {
   num = _num;
   name = _name;
   wpi_num = _wpi_num;
-  cout << "Starting pin " << num << " name: " << name << " wpi: " << wpi_num << endl;
+  index = idx;
+  cout << "Starting pin idx " << index << " num: " << num << " name: " << name << " wpi: " << wpi_num << endl;
 }
 
 void Pin::serializeJson(Writer<StringBuffer>* writer)
@@ -25,6 +26,10 @@ void Pin::serializeJson(Writer<StringBuffer>* writer)
   writer->String(name.c_str());
   writer->String("num");
   writer->Int(num);
+
+  writer->String("index");
+  writer->Int(index);
+
   writer->String("wpi_num");
   writer->Int(wpi_num);
 

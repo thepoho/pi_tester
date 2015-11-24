@@ -14,7 +14,7 @@ class Pin
 public:
   Pin();
   ~Pin();
-  void startup(int _num, string _name, int _wpi_num);
+  void startup(int _num, string _name, int _wpi_num, int idx);
   int getWpiNum() {return wpi_num;}
   string getName() {return name;}
   void serializeJson(Writer<StringBuffer>* writer);
@@ -22,7 +22,7 @@ public:
   void setOutputState(int os) { outputState = os; }
 private:
   string name;
-  int num, wpi_num;
+  int num, wpi_num, index;
   int direction;
   int outputState;
 };
