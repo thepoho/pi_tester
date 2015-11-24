@@ -125,6 +125,7 @@ void SocketServer::processMessage(Document* document){
   if(message.compare("shift_out") == 0){
     pPiIO->shiftOut(document);
   }else if(message.compare("get_pins") == 0){
+    sendMessage(pPiIO->getInfoString());
     // pGameController->sendWebMessage(pGameController->lampController()->getInfoString());
   }
 }

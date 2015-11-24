@@ -17,6 +17,7 @@ PiTester = {
     $("button.shift_out_send").click(function(){
       PiTester.sendShiftOut();
     });
+
     // $("select.game_state").change(function(){
     //   var data = {
     //     message: "set_game_state", 
@@ -58,31 +59,28 @@ PiTester = {
     $("tr.shift_out_row td").unbind();
     $("tr.shift_out_row td").click(function(){
       $(this).find("input").click();
+      PiTester.sendShiftOut();      
+    })
+
+    
+    $("input.shift_row").unbind();
+    $("input.shift_row").click(function(){
+      PiTester.sendShiftOut();      
     })
   },
 
   socketOnMessage: function(ev){
-    // console.log("GOT WS DATA");
     console.log("WS response: "+ev.data);
-    // console.log(ev);
 
     var data = $.parseJSON(ev.data);
-    // if(data.name == "get_buttons"){
-    //   PiTester.handleGetButtonsResponses(data.data);
-    // }
+    if(data.name == "get_pins"){
+      PiTester.handleGetPinsResponse(data.data);
+    }
     
   },
 
   socketOnOpen: function(ev){
-    //ask server for switch/lamp/coil information
-    // PiTester.sendMessage({message: "get_buttons"});
-
-    // PiTester.sendMessage({message: "get_lamps"});
-
-    // PiTester.sendMessage({message: "get_coils"});
-
-    // PiTester.sendMessage({message: "get_game_state"});
-
+    PiTester.sendMessage({message: "get_pins"});
   },
 
   sendMessage: function(hash){
@@ -96,7 +94,56 @@ PiTester = {
     textarea[0].scrollTop = textarea[0].scrollHeight;
   },
 
-  handleGetButtonsResponses: function(button_data){
+  handleGetPinsResponse: function(pin_data){
+    var direction = "<select class='direction'><option value=''>Not Set</option><option value='out'>Out</option><option value='in'>In</option></select>";
+    var state = "<select class='state'><option value='off'>Off</option><option value='on'>On</option></select>";
+    var txt = "";
+    $.each(pin_data, function(idx, data){
+      
+      if(idx % 2 == 0){
+        txt += '<tr><td>'+data.num+'</td><td>'+data.name+'</td><td data-idx="'+idx+'">';
+        if(data.wpi_num != -1){
+          txt += direction + '</td><td data-idx="'+idx+'">' + state;
+        }else{
+          txt += '</td><td>';
+        }
+        txt += '</td><td style="width:30px">';
+        if(idx == 0){
+          txt += "<i class='fa fa-square-o'></i>";
+        }else{
+          txt += "<i class='fa fa-dot-circle-o'></i>";
+        }
+        txt += "</td>"; 
+      }else{
+        txt += '<td style="width:30px"><i class="fa fa-dot-circle-o"></i></td><td  data-idx="'+idx+'">';
+        if(data.wpi_num != -1){
+          txt += state + '</td><td data-idx="'+idx+'">' + direction + '</td><td>';
+        }else{
+          txt += '</td><td></td><td>';
+        }
+        txt += data.name+'</td><td>'+data.num+'</td></tr>';
+      }
+    });
+
+    $("table.pins-table").append(txt);
+    
+    $("select.direction").change(function(){
+      var data = {};
+      data.message = "set_direction";
+      data.idx = parseInt($(this).parent().attr("data-idx"));
+      data.direction = $(this).val();
+      // console.log(data);
+      PiTester.sendMessage(data);
+    });
+
+    $("select.state").change(function(){
+      var data = {};
+      data.message = "set_state";
+      data.idx = parseInt($(this).parent().attr("data-idx"));
+      data.state = $(this).val();
+      // console.log(data);
+      PiTester.sendMessage(data);
+    });
   },
 
 }
