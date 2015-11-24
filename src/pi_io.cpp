@@ -43,13 +43,13 @@ void PiIO::setPinMode(int pin, int mode)
 void PiIO::pinWrite(int pin, int value)
 {
   setPinMode(pin, OUTPUT);
-  digitalWrite(pins[pin], value);
+  digitalWrite(pins[pin].getWpiNum(), value);
 }
 
 int PiIO::pinRead(int pin)
 {
   setPinMode(pin, INPUT);
-  return(digitalRead(pins[pin]));
+  return(digitalRead(pins[pin].getWpiNum()));
 }
 
 void PiIO::doDelay(unsigned int howLong)

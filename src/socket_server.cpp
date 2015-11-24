@@ -126,6 +126,21 @@ void SocketServer::processMessage(Document* document){
     pPiIO->shiftOut(document);
   }else if(message.compare("get_pins") == 0){
     sendMessage(pPiIO->getInfoString());
-    // pGameController->sendWebMessage(pGameController->lampController()->getInfoString());
+  }else if(message.compare("set_direction") == 0){
+    int pin_idx = document->FindMember("idx")->value.GetInt();
+    string tmp = document->FindMember("direction")->value.GetString();
+    if(tmp.compare("out") == 0){
+      pPiIO->setPinMode(pin_idx, OUTPUT);
+    }else{
+      pPiIO->setPinMode(pin_idx, INPUT);
+    }
+  }else if(message.compare("set_state") == 0){
+    int pin_idx = document->FindMember("idx")->value.GetInt();
+    string tmp = document->FindMember("state")->value.GetString();
+    if(tmp.compare("on") == 0){
+      pPiIO->pinWrite(pin_idx, HIGH);
+    }else{
+      pPiIO->pinWrite(pin_idx, LOW);
+    }
   }
 }
