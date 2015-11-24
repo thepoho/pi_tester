@@ -139,16 +139,38 @@ void PiIO::loadPins()
   assert(document.HasMember("pins"));
   assert(document.IsObject());
 
-   const Value& data = document["pins"];
-   //const Value& data = document.FindMember("pins");//.value;
-   int size = data.Size();
-   size = size - 1;
-   cout << "Size is " << size << endl;
-   for (int i = size; i >= 0; i--){ // Uses SizeType instead of size_t
-     int wpi = -1;
-     if(data[i].HasMember("wpi")){
-       wpi = data[i]["wpi"].GetInt();
-     }
-     pins[i].startup(i, data[i]["name"].GetString(), wpi);
-   }
+  const Value& data = document["pins"];
+  //const Value& data = document.FindMember("pins");//.value;
+  int size = data.Size();
+  size = size - 1;
+  cout << "Size is " << size << endl;
+  for (int i = size; i >= 0; i--){ // Uses SizeType instead of size_t
+    int wpi = -1;
+    if(data[i].HasMember("wpi")){
+      wpi = data[i]["wpi"].GetInt();
+    }
+    pins[i].startup(i, data[i]["name"].GetString(), wpi);
+  }
+  cout << getInfoString() << endl;
+}
+
+
+string PiIO::getInfoString()
+{
+  StringBuffer s;
+  Writer<StringBuffer> writer(s);
+
+  writer.StartObject();
+  writer.String("name");
+  writer.String("get_pins");
+  writer.String("data");
+  writer.StartArray();
+
+  for (int i = 0; i < 40; i++){
+      pins[i].serializeJson(&writer);
+  }
+  writer.EndArray();
+  writer.EndObject();
+
+  return s.GetString();
 }

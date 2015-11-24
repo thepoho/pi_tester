@@ -17,6 +17,9 @@ public:
   void startup(int _num, string _name, int _wpi_num);
   int getWpiNum() {return wpi_num;}
   string getName() {return name;}
+  void serializeJson(Writer<StringBuffer>* writer);
+  void setDirection(int dir) { direction = dir; }
+  void setOutputState(int os) { outputState = os; }
 private:
   string name;
   int num, wpi_num;

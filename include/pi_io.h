@@ -38,6 +38,7 @@ public:
 
   void setupPins();
   //void setSerialOutput(int num, char state);
+  string getInfoString();
 
 private:
   //char currentSerialState[SERIAL_NUM_OUTPUTS];
